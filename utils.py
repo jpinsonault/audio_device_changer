@@ -1,7 +1,6 @@
 import ctypes
 import comtypes
 from ctypes import wintypes
-import sounddevice as sd
 
 
 MMDeviceApiLib = comtypes.GUID(
@@ -137,30 +136,30 @@ def get_volume_percent():
     return volume * 100
 
 
-def get_audio_devices():
-    hostapi_names = [hostapi['name'] for hostapi in sd.query_hostapis()]
-    devices = []
-    for i, device in enumerate(sd.query_devices()):
-        if "MME" in hostapi_names[device["hostapi"]]:
-            devices.append({**device, **{"device_id": i}})
-
-    return devices
-
-
-def get_default_input():
-    return sd.default.device[0]
-
-
-def get_default_output():
-    return sd.default.device[1]
-
-
-def set_input_audio_device(device_id: int):
-    print("before", sd.default.device)
-    sd.default.device = [device_id, sd.default.device[1]]
-    print(sd.default.device)
-
-
-def set_output_audio_device(device_id: int):
-    sd.default.device = [device_id, sd.default.device[1]]
-
+# def get_audio_devices():
+#     hostapi_names = [hostapi['name'] for hostapi in sd.query_hostapis()]
+#     devices = []
+#     for i, device in enumerate(sd.query_devices()):
+#         if "MME" in hostapi_names[device["hostapi"]]:
+#             devices.append({**device, **{"device_id": i}})
+#
+#     return devices
+#
+#
+# def get_default_input():
+#     return sd.default.device[0]
+#
+#
+# def get_default_output():
+#     return sd.default.device[1]
+#
+#
+# def set_input_audio_device(device_id: int):
+#     print("before", sd.default.device)
+#     sd.default.device = [device_id, sd.default.device[1]]
+#     print(sd.default.device)
+#
+#
+# def set_output_audio_device(device_id: int):
+#     sd.default.device = [device_id, sd.default.device[1]]
+#
