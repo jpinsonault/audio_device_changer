@@ -20,10 +20,7 @@ def blah():
 
 @app.route("/getSystemInfo")
 def get_system_info():
-    return jsonify(systemVolume=str(utils.get_volume_percent()),
-                   audioDevices=utils.get_audio_devices(),
-                   defaultInput=utils.get_default_input(),
-                   defaultOutput=utils.get_default_output())
+    return jsonify(systemVolume=str(utils.get_volume_percent()))
 
 
 @app.route("/setAppVolume")

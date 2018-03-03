@@ -1,8 +1,5 @@
 import server
 from waitress import serve
-import json
-
-from utils import get_audio_devices
 
 
 def main():
